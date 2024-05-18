@@ -52,3 +52,11 @@ jobs:
       # Step 5: Build the project and run unit tests with JaCoCo for test coverage
       - name: Build with Maven
         run: mvn clean verify
+      - name: Generate JaCoCo report
+        run: mvn jacoco:report
+      
+      - name: Archive JaCoCo report
+        uses: actions/upload-artifact@v2
+        with:
+          name: jacoco-report
+          path: target/site/jacoco
