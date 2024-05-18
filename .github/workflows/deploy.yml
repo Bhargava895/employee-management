@@ -59,4 +59,4 @@ jobs:
 
       - name: check in file
         run: |
-          ls /home/runner/work/employee-management/employee-management/target/
+          ls /home/runner/work/employee-management/employee-management/target/site/jacoco/
