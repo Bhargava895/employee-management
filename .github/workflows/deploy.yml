@@ -22,3 +22,16 @@ jobs:
         with:
           distribution: 'adopt'
           java-version: '17'
+
+      # Cache the Maven dependencies to speed up the build process
+      - name: Cache Maven dependencies
+        uses: actions/cache@v3
+        with:
+          path: ~/.m2
+          key: ${{ runner.os }}-maven-${{ hashFiles('**/pom.xml') }}
+          restore-keys: ${{ runner.os }}-maven
+
+      # Build the project and run unit tests with JaCoCo for test coverage
+      - name: Build with Maven
+        run: mvn clean verify    
+          
