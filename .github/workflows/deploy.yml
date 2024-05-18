@@ -15,7 +15,7 @@ jobs:
 
       - name: Change MySQL Root Password
         run: |
-          mysql -h 127.0.0.1 -P 3306 -u root -proot -e "ALTER USER 'root'@'localhost' IDENTIFIED BY 'Cybage@123';"
+          sudo mysql -e "ALTER USER 'root'@'localhost' IDENTIFIED BY 'Cybage@123';"
 
       - name: Grant Privileges to Root User
         run: |
