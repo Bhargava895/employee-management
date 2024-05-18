@@ -12,7 +12,8 @@ jobs:
     steps:
       - name: Install MySQL client
         run: sudo apt-get update && sudo apt-get install -y mysql-client
-
+      - name: Start MySQL Service
+        run: sudo systemctl start mysql
       - name: Change MySQL Root Password
         run: |
           sudo mysql -e "ALTER USER 'root'@'localhost' IDENTIFIED BY 'Cybage@123';"
