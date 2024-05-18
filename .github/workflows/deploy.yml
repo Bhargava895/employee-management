@@ -22,6 +22,12 @@ jobs:
         with:
           distribution: 'adopt'
           java-version: '17'
+      - name: Set up MySQL
+        uses: mysql/setup-mysql@v1
+        with:
+          mysql-version: '8.0'
+          password: ${{ secrets.MYSQL_PASSWORD }}
+          
 
       # Cache the Maven dependencies to speed up the build process
       - name: Cache Maven dependencies
