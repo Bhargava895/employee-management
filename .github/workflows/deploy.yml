@@ -16,7 +16,7 @@ jobs:
         run: sudo systemctl start mysql
       - name: Change MySQL Root Password
         run: |
-          sudo mysql -e "ALTER USER 'root'@'localhost' IDENTIFIED BY 'Cybage@123';"
+          mysql -u root -proot -e "ALTER USER 'root'@'localhost' IDENTIFIED BY 'Cybage@123';"
 
       - name: Grant Privileges to Root User
         run: |
