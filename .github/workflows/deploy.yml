@@ -100,12 +100,7 @@ jobs:
     runs-on: ubuntu-latest
     needs: build
 
-    steps:
-    - name: Checkout Code
-      uses: actions/checkout@v2
-      with:
-        fetch-depth: 0
-          
+    steps:          
     - name: Set up SSH
       run: echo "$SSH_PRIVATE_KEY" > ~/key.pem
       env:
@@ -116,7 +111,7 @@ jobs:
 
     - name: Deploy to EC2
       run: |
-        ssh -i ~/key.pem -o StrictHostKeyChecking=no ec2-user@54.237.60.171 'pwd'
+        ssh -i ~/key.pem -o StrictHostKeyChecking=no ec2-user@54.237.60.171 'git clone https://rushikeshmj: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@github.com/rushikeshmj/employee-management.git'
         ssh -i ~/key.pem -o StrictHostKeyChecking=no ec2-user@54.237.60.171 'sudo chmod +x ~/employee-management/deploy/deploy.sh'
         ssh -i ~/key.pem -o StrictHostKeyChecking=no ec2-user@54.237.60.171 'sh ~/employee-management/deploy/deploy.sh'
       
