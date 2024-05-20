@@ -109,14 +109,10 @@ jobs:
     - name: Set permissions for key.pem
       run: chmod 400 ~/key.pem
 
-    - name: Add known hosts
-      run: echo "$SSH_KNOWN_HOSTS" > ~/.ssh/known_hosts
-      env:
-        SSH_KNOWN_HOSTS: ${{ secrets.SSH_KNOWN_HOSTS }}
 
     - name: Deploy to EC2
       run: |
-        ssh -i ~/key.pem ec2-user@54.237.60.171 'sudo chmod +x /deploy/deploy.sh'
+        ssh -i -o StrictHostKeyChecking=no ~/key.pem ec2-user@54.237.60.171 'sudo chmod +x /deploy/deploy.sh'
       
 
               
