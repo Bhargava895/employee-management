@@ -107,4 +107,4 @@ jobs:
 
     - name: Deploy to EC2
       run: |
-        ssh -o StrictHostKeyChecking=no ec2-user@your-ec2-instance-public-ip 'bash -s' < ./deploy/deploy.sh      
+        ssh -o StrictHostKeyChecking=no key.pem ec2-user@54.237.60.171 'bash -s' < ./deploy/deploy.sh      
