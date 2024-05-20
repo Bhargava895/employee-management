@@ -79,10 +79,12 @@ jobs:
 
       - name: Tag Docker image
         run: |
-          docker tag githubaction-poc:latest public.ecr.aws/p6k7d0g7/githubaction-poc:latest
+          docker tag githubaction-poc:latest 781365762844.dkr.ecr.us-east-1.amazonaws.com/githubaction-poc:latest
       
       - name: Push Docker image to ECR
         run: |
+          docker ps
+          docker images
           docker push 781365762844.dkr.ecr.us-east-1.amazonaws.com/githubaction-poc:latest
       
       
