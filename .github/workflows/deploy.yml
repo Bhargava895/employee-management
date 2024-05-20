@@ -83,6 +83,6 @@ jobs:
       
       - name: Push Docker image to ECR
         run: |
-          docker push public.ecr.aws/p6k7d0g7/githubaction-poc:latest
+          docker push 781365762844.dkr.ecr.us-east-1.amazonaws.com/githubaction-poc:latest
       
       
