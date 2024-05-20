@@ -80,11 +80,19 @@ jobs:
       - name: Tag Docker image
         run: |
           docker tag githubaction-poc:latest 781365762844.dkr.ecr.us-east-1.amazonaws.com/githubaction-poc:latest
+
+      - name: Install Trivy
+        run: |
+          sudo apt-get install wget
+          wget https://github.com/aquasecurity/trivy/releases/download/v0.39.1/trivy_0.39.1_Linux-64bit.deb
+          sudo dpkg -i trivy_0.39.1_Linux-64bit.deb
+
+      - name: Scan Docker image with Trivy
+        run: |
+          trivy image --severity HIGH,CRITICAL 781365762844.dkr.ecr.us-east-1.amazonaws.com/githubaction-poc:latest
       
       - name: Push Docker image to ECR
         run: |
-          docker ps
-          docker images
           docker push 781365762844.dkr.ecr.us-east-1.amazonaws.com/githubaction-poc:latest
       
       
