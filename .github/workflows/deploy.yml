@@ -70,7 +70,7 @@ jobs:
           key: ${{ runner.os }}-sonar
           
       - name: SonarQube Scan
-        uses: SonarSource/sonarqube-scan-action@v1.1
+        uses: SonarSource/sonarqube-scan-action@v1.0.1
         env:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
           SONAR_HOST_URL: ${{ secrets.SONAR_HOST_URL }}
