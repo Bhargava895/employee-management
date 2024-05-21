@@ -64,7 +64,7 @@ jobs:
 
       # Step III: SCA using SonarQube along with quality gates
       - name: SonarQube Scan
-        uses: SonarSource/sonarqube-scan-action@main
+        uses: SonarSource/sonarqube-scan-action@v9.9
         env:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
           SONAR_HOST_URL: ${{ secrets.SONAR_HOST_URL }}
