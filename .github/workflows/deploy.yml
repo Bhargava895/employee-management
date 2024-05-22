@@ -62,7 +62,22 @@ jobs:
         run: |
           ls /home/runner/work/employee-management/employee-management/target/site/jacoco/
 
-    
+      - name: Run SonarQube analysis
+        env:
+          SONAR_HOST_URL: ${{ secrets.SONAR_HOST_URL }}
+          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+        run: mvn sonar:sonar
+
+      - name: Enforce Quality Gate
+        env:
+          SONAR_HOST_URL: ${{ secrets.SONAR_HOST_URL }}
+          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+        run: |
+          status=$(curl -s -u $SONAR_TOKEN: "$SONAR_HOST_URL/api/qualitygates/project_status?projectKey=your_project_key" | jq -r '.projectStatus.status')
+          if [ "$status" != "OK" ]; then
+            echo "Quality gate failed"
+            exit 1
+          fi
           
       - name: Build and package JAR
         run: mvn clean package
