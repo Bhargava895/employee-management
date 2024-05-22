@@ -62,6 +62,9 @@ jobs:
         run: |
           ls /home/runner/work/employee-management/employee-management/target/site/jacoco/
 
+      - name: Install jq
+        run: sudo apt-get install jq
+        
       - name: Run SonarQube analysis
         env:
           SONAR_HOST_URL: ${{ secrets.SONAR_HOST_URL }}
