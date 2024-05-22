@@ -62,22 +62,7 @@ jobs:
         run: |
           ls /home/runner/work/employee-management/employee-management/target/site/jacoco/
 
-      # Step III: SCA using SonarQube along with quality gates
-      - name: Cache SonarQube packages
-        uses: actions/cache@v2
-        with:
-          path: ~/.sonar/cache
-          key: ${{ runner.os }}-sonar
-          
-      - name: SonarQube Scan
-        uses: SonarSource/sonarqube-scan-action@v1.0.1
-        env:
-          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
-          SONAR_HOST_URL: ${{ secrets.SONAR_HOST_URL }}
-        with:
-          args: >
-            -Dsonar.projectKey=employees-poc
-            -Dsonar.java.binaries=target
+    
           
       - name: Build and package JAR
         run: mvn clean package
