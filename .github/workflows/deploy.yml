@@ -76,11 +76,24 @@ jobs:
           SONAR_HOST_URL: ${{ secrets.SONAR_HOST_URL }}
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
         run: |
-          status=$(curl -s -u $SONAR_TOKEN: "$SONAR_HOST_URL/api/qualitygates/project_status?projectKey=net.javaguides:springboot-backend" | jq -r '.projectStatus.status')
+          # Fetch the project status from SonarQube API
+          response=$(curl -s -u "$SONAR_TOKEN": "$SONAR_HOST_URL/api/qualitygates/project_status?projectKey=net.javaguides:springboot-backend")
+
+          # Print the raw response for debugging purposes
+          echo "Response: $response"
+
+          # Extract the status using jq
+          status=$(echo "$response" | jq -r '.projectStatus.status')
+
+          # Check the status and exit if it's not OK
           if [ "$status" != "OK" ]; then
             echo "Quality gate failed"
             exit 1
+          else
+            echo "Quality gate passed"
           fi
+          
+          
           
       - name: Build and package JAR
         run: mvn clean package
