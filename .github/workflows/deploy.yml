@@ -141,4 +141,7 @@ jobs:
         ssh -i ~/key.pem -o StrictHostKeyChecking=no ec2-user@54.237.60.171 'sh ~/employee-management/deploy/deploy.sh'
       
 
+
+
+
               
