@@ -102,11 +102,11 @@ jobs:
 
       - name: Scan Docker image with Trivy
         run: |
-          trivy image --severity HIGH,CRITICAL 781365762844.dkr.ecr.us-east-1.amazonaws.com/githubaction-poc:latest
+          trivy image --severity HIGH,CRITICAL 905418319927.dkr.ecr.us-east-1.amazonaws.com/githubaction-poc:latest
       
-     - name: Push Docker image to ECR
+      - name: Push Docker image to ECR
         run: |
-          docker push 781365762844.dkr.ecr.us-east-1.amazonaws.com/githubaction-poc:latest
+          docker push 905418319927.dkr.ecr.us-east-1.amazonaws.com/githubaction-poc:latest
       
   deploy:
     runs-on: ubuntu-latest
