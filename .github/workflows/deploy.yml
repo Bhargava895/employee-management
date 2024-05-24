@@ -124,7 +124,7 @@ jobs:
     - name: Deploy to EC2
       run: |
         ssh -i ~/key.pem -o StrictHostKeyChecking=no ec2-user@50.17.128.83 'rm -rf ~/employee*'
-        ssh -i ~/key.pem -o StrictHostKeyChecking=no ec2-user@50.17.128.83 'git clone https://rushikeshmj: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@github.com/rushikeshmj/employee-management.git'
+        ssh -i ~/key.pem -o StrictHostKeyChecking=no ec2-user@50.17.128.83 'git clone https://bhargava895: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@github.com/bhargava895/employee-management.git'
         ssh -i ~/key.pem -o StrictHostKeyChecking=no ec2-user@50.17.128.83 'sudo chmod +x ~/employee-management/deploy/deploy.sh'
         ssh -i ~/key.pem -o StrictHostKeyChecking=no ec2-user@50.17.128.83 'sh ~/employee-management/deploy/deploy.sh'
       
