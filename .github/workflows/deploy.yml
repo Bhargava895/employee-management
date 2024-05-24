@@ -114,19 +114,19 @@ jobs:
 
     steps:          
     - name: Set up SSH
-      run: echo "$SSH_PRIVATE_KEY" > ~/key.pem
+      run: echo "$SSH_PRIVATE_KEY" > ~/poc.pem
       env:
         SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
 
-    - name: Set permissions for key.pem
-      run: chmod 400 ~/key.pem
+    - name: Set permissions for poc.pem
+      run: chmod 400 ~/poc.pem
 
     - name: Deploy to EC2
       run: |
-        ssh -i ~/key.pem -o StrictHostKeyChecking=no ec2-user@50.17.128.83 'rm -rf ~/employee*'
-        ssh -i ~/key.pem -o StrictHostKeyChecking=no ec2-user@50.17.128.83 'git clone https://bhargava895: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@github.com/bhargava895/employee-management.git'
-        ssh -i ~/key.pem -o StrictHostKeyChecking=no ec2-user@50.17.128.83 'sudo chmod +x ~/employee-management/deploy/deploy.sh'
-        ssh -i ~/key.pem -o StrictHostKeyChecking=no ec2-user@50.17.128.83 'sh ~/employee-management/deploy/deploy.sh'
+        ssh -i ~/poc.pem -o StrictHostKeyChecking=no ec2-user@50.17.128.83 'rm -rf ~/employee*'
+        ssh -i ~/poc.pem -o StrictHostKeyChecking=no ec2-user@50.17.128.83 'git clone https://bhargava895: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@github.com/bhargava895/employee-management.git'
+        ssh -i ~/poc.pem -o StrictHostKeyChecking=no ec2-user@50.17.128.83 'sudo chmod +x ~/employee-management/deploy/deploy.sh'
+        ssh -i ~/poc.pem -o StrictHostKeyChecking=no ec2-user@50.17.128.83 'sh ~/employee-management/deploy/deploy.sh'
       
 
 
