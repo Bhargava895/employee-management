@@ -123,10 +123,10 @@ jobs:
 
     - name: Deploy to EC2
       run: |
-        ssh -i ~/github.pem -o StrictHostKeyChecking=no ec2-user@54.196.176.113 'rm -rf ~/employee*'
-        ssh -i ~/github.pem -o StrictHostKeyChecking=no ec2-user@54.196.176.113 'git clone https://bhargava895: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@github.com/bhargava895/employee-management.git'
-        ssh -i ~/github.pem -o StrictHostKeyChecking=no ec2-user@54.196.176.113 'sudo chmod +x ~/employee-management/deploy/deploy.sh'
-        ssh -i ~/github.pem -o StrictHostKeyChecking=no ec2-user@54.196.176.113'sh ~/employee-management/deploy/deploy.sh'
+        ssh -i ~/github.pem -o StrictHostKeyChecking=no ec2-user@18.212.209.219 'rm -rf ~/employee*'
+        ssh -i ~/github.pem -o StrictHostKeyChecking=no ec2-user@18.212.209.219 'git clone https://bhargava895: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@github.com/bhargava895/employee-management.git'
+        ssh -i ~/github.pem -o StrictHostKeyChecking=no ec2-user@18.212.209.219 'sudo chmod +x ~/employee-management/deploy/deploy.sh'
+        ssh -i ~/github.pem -o StrictHostKeyChecking=no ec2-user@18.212.209.219'sh ~/employee-management/deploy/deploy.sh'
       
 
 
